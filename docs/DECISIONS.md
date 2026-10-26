@@ -1,3 +1,28 @@
+# GuildChatAI — decisions and evidence
+
+**Project author and creative direction:** Babuni.dev
+
+| Implemented choice | Evidence | Interpretation boundary |
+| --- | --- | --- |
+| Keep received text locally | `guildMessages` append and TOC SavedVariables | No retention policy or historical approval recovered |
+| Send user-supplied text | `/gcai` handler | “AI responses” comment does not demonstrate AI generation |
+| Refresh roster on event | `GUILD_ROSTER_UPDATE` handler | Re-entrant refresh risk remains untested |
+| Print messages | `print` calls | Disk log creation is unverified |
+
+## Open verification
+
+- Validate Lua syntax, addon varargs and callback argument conventions against the intended 1.12 client; interface 11200 alone does not establish compatibility.
+- Check `%f` timestamp handling, saved-variable initialization timing and malformed existing DB tables.
+- Check whether calling `GuildRoster()` inside its update event causes repeated requests/events.
+- Verify guild membership and send failures; the command prints confirmation after requesting a send, without delivery acknowledgement.
+- Decide retention and clearing behavior before extended use; storage grows without a bound and printed text does not ensure disk chat logging.
+
+These are source-observed choices and proposed checks, not invented historical approvals or an approved feature backlog.
+
+## Preserved earlier documentation
+
+The following earlier record is retained verbatim. Statements about unavailable history or pending verification describe that earlier snapshot; the dated evidence above supplements it.
+
 # GuildChatAI — design evidence and decisions
 
 **Author:** Babuni.dev
