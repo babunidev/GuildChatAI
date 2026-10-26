@@ -1,5 +1,6 @@
 ## Interface: 11200
 ## Title: GuildChatAI
+## Author: Babuni.dev
 ## Notes: Logs guild chat and sends AI responses
 ## SavedVariables: GuildChatAIDB
 GuildChatAI.lua
